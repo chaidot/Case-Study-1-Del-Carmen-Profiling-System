@@ -1,0 +1,336 @@
+.householdscontainer{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.householdstoppart{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.householdstopright{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchhouseholdinput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+#addhouseholdsbutton{
+    width: 200px;
+    background-color: #007bff;
+    border-radius: 15px;
+    border-color: #007bff;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#addhouseholdsbutton:hover{
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+#searchhouseholdsbutton{
+    background-color: #007bff;
+    border-radius: 15px;
+    border-color: #007bff;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#searchhouseholdsbutton:hover{
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+#allhouseholdsbutton{
+    border-radius: 15px;
+    border-color: #007bff;
+    margin-left: 10px;
+    color: #007bff;
+    background-color: white;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#allhouseholdsbutton:hover{
+    border-color: #0056b3;
+    color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.householdstable{
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+#householdsviewmore{
+    color: #007bff !important;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+#householdsviewmore:hover{
+    color: #0056b3 !important;
+    cursor: pointer;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+#householdeditbutton{
+    background-color: #007bff;
+    border-radius: 15px;
+    border-color: #007bff;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#householdeditbutton:hover{
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+#householddeletebutton{
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.table-container thead {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 123, 255, 0.1);
+    z-index: 1;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 2px;
+}
+
+.resultstext{
+    margin-top: 0px !important;
+    color: #007bff;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.addhouseholdheadbutton{
+    cursor: pointer;
+    color: #007bff;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.addhouseholdheadbutton:hover{
+    color: #0056b3;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+#findresident{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subheading{
+    font-weight: 900;
+    margin-top: 50x !important;
+    margin-bottom: 0px;
+    color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.removebutton{
+    background-color: white;
+    border: none;
+    color: #007bff;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.removebutton:hover{
+    color: #0056b3;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.viewmorebutton{
+    background-color: white;
+    border: none;
+    color: #007bff;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.viewmorebutton:hover{
+    color: #0056b3;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.buttons:hover{
+    border-top: solid #007bff 1px;
+    border-bottom: solid #007bff 1px;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomiccard {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 30px; /* Adds space between cards */
+    padding: 10px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #ccc transparent; /* Firefox scrollbar styling */
+}
+
+/* For Webkit browsers (Chrome, Edge, Safari) */
+.socioeconomiccard::-webkit-scrollbar {
+    height: 5px; /* Thin scrollbar */
+}
+
+.socioeconomiccard::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color of scrollbar */
+    border-radius: 10px;
+}
+
+.socioeconomiccard::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+}
+
+.results{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.household-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.05);
+}
+
+.household-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.household-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+}
+
+.household-title {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.household-content {
+    color: #333;
+    line-height: 1.6;
+}
+
+.household-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.household-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.household-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.household-member {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.household-member:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .household-container {
+        padding: 15px;
+    }
+    
+    .household-card {
+        padding: 15px;
+    }
+    
+    .household-title {
+        font-size: 1.2rem;
+    }
+}

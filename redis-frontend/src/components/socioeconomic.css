@@ -1,0 +1,287 @@
+.socioeconomiccontainer{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.socioeconomictop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: #007bff solid 2px;
+    border-bottom: #007bff solid 2px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomicoption{
+    color: #007bff;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomicoption:hover {
+    color: #0056b3;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+.socioeconomicoption.active {
+    color: #0056b3;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.3);
+}
+
+.socioeconomiccard{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.col-md-4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#socioeconomictotaltext{
+    margin: 0px;
+    color: #007bff;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#socioeconomicviewmore{
+    margin: 0px;
+    color: #007bff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#socioeconomicviewmore:hover{
+    color: #0056b3;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+.socioeconomictable{
+    width: 90%;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomicstoppart{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.educationtop{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    justify-content: end;
+}
+
+#educationfilter{
+    border: #007bff solid 1px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+}
+
+#educationfilter:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.socioeconomicstopright{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchsocioeconomicinput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+#searchsocioeconomicsbutton{
+    background-color: #007bff;
+    border-radius: 15px;
+    border-color: #007bff;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+#searchsocioeconomicsbutton:hover{
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.educationdatacard {
+    display: flex;
+    white-space: nowrap;
+    gap: 30px;
+    padding-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.educationdatacard .col-md-4 {
+    flex: 0 0 auto;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.educationdatacard .col-md-4:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+}
+
+.educationdatacard::-webkit-scrollbar {
+    height: 3px;
+}
+
+.educationdatacard::-webkit-scrollbar-thumb {
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 2px;
+}
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    position: relative;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.table-container thead {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 123, 255, 0.1);
+    z-index: 1;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 2px;
+}
+
+.resultstext{
+    margin-left: 10px;
+    margin-top: 15px;
+    color: #007bff;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomic-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.05);
+}
+
+.socioeconomic-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.socioeconomic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+}
+
+.socioeconomic-title {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomic-content {
+    color: #333;
+    line-height: 1.6;
+}
+
+.socioeconomic-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.socioeconomic-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomic-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.socioeconomic-item {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.socioeconomic-item:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .socioeconomic-container {
+        padding: 15px;
+    }
+    
+    .socioeconomic-card {
+        padding: 15px;
+    }
+    
+    .socioeconomic-title {
+        font-size: 1.2rem;
+    }
+}
