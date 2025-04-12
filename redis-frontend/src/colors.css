@@ -1,0 +1,27 @@
+:root {
+    --soft-white: #aec6cf;
+    --warm-beige: #9ebeca;
+    --charcoal-gray: #9e98a5;
+    
+    /* Additional shades for gradients and variations */
+    --soft-white-light: #FFF8F8;
+    --soft-white-dark: #FFE8E8;
+    --warm-beige-light: #F8E8E4;
+    --warm-beige-dark: #E8D1CA;
+    --charcoal-gray-light: #5E5E60;
+    --charcoal-gray-dark: #3E3E40;
+    
+    /* Semantic color assignments */
+    --background-primary: var(--soft-white);
+    --background-secondary: var(--warm-beige);
+    --text-primary: var(--charcoal-gray);
+    --text-secondary: var(--charcoal-gray-light);
+    --accent-primary: var(--warm-beige);
+    --accent-secondary: var(--charcoal-gray);
+    --border-color: var(--warm-beige-dark);
+    --hover-color: var(--warm-beige-light);
+    --active-color: var(--charcoal-gray);
+    --card-background: var(--soft-white);
+    --sidebar-background: var(--warm-beige);
+    --sidebar-active: var(--charcoal-gray);
+} 
