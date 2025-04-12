@@ -1,336 +1,430 @@
-.householdscontainer{
-    width: 80%;
+/* Base Styles */
+.householdscontainer {
+    width: 95%;  /* Increased from 80% to 95% */
+    max-width: 1400px;  /* Increased from 1200px to 1400px */
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;  /* Increased padding from 20px to 25px */
 }
 
-.householdstoppart{
+/* Top Section */
+.householdstoppart {
     width: 100%;
     display: flex;
     flex-direction: row;
-    height: 50px;
+    height: 60px;  /* Increased from 50px to 60px */
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px 20px;  /* Increased padding */
 }
 
-.householdstopright{
+.householdstopright {
     display: flex;
     flex-direction: row;
-    height: 50px;
+    height: 60px;  /* Increased from 50px to 60px */
     align-items: center;
-    justify-content: center;
+    gap: 12px;  /* Slightly increased gap */
 }
 
-#searchhouseholdinput{
+/* Search Input */
+.searchhouseholdinput {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 15px;
+    height: 40px;  /* Increased from 38px to 40px */
 }
 
-#addhouseholdsbutton{
-    width: 200px;
-    background-color: #007bff;
+.searchhouseholdinput input {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: border-color 0.3s;
+}
+
+.searchhouseholdinput input:focus {
+    border-color: #00bf63;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 191, 99, 0.2);
+}
+
+/* Buttons */
+.addhouseholdsbutton,
+.searchhouseholdsbutton,
+.allhouseholdsbutton {
+    height: 40px;  /* Increased from 38px to 40px */
+    padding: 8px 18px;  /* Increased horizontal padding */
     border-radius: 15px;
-    border-color: #007bff;
-    transition: all 0.3s ease;
     font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#addhouseholdsbutton:hover{
-    background-color: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-#searchhouseholdsbutton{
-    background-color: #007bff;
-    border-radius: 15px;
-    border-color: #007bff;
-    margin-left: 10px;
     transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#searchhouseholdsbutton:hover{
-    background-color: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-#allhouseholdsbutton{
-    border-radius: 15px;
-    border-color: #007bff;
-    margin-left: 10px;
-    color: #007bff;
-    background-color: white;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#allhouseholdsbutton:hover{
-    border-color: #0056b3;
-    color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.householdstable{
-    margin-top: 10px;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
-}
-
-#householdsviewmore{
-    color: #007bff !important;
-    margin: 0px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-#householdsviewmore:hover{
-    color: #0056b3 !important;
+    justify-content: center;
+    gap: 8px;
     cursor: pointer;
-    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
+    border: 1px solid transparent;
 }
 
-#householdeditbutton{
-    background-color: #007bff;
-    border-radius: 15px;
-    border-color: #007bff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+.addhouseholdsbutton {
+    width: 220px;  /* Increased from 200px to 220px */
+    background-color: #00bf63;
+    color: white;
+    border-color: #00bf63;
 }
 
-#householdeditbutton:hover{
-    background-color: #0056b3;
-    border-color: #0056b3;
+.addhouseholdsbutton:hover {
+    background-color: #00a857;
+    border-color: #00a857;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 191, 99, 0.3);
 }
 
-#householddeletebutton{
-    border-radius: 15px;
-    transition: all 0.3s ease;
+.searchhouseholdsbutton {
+    background-color: #00bf63;
+    color: white;
+    border-color: #00bf63;
+}
+
+.searchhouseholdsbutton:hover {
+    background-color: #00a857;
+    border-color: #00a857;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 191, 99, 0.3);
+}
+
+.allhouseholdsbutton {
+    border-color: #00bf63;
+    color: #00bf63;
+    background-color: white;
+}
+
+.allhouseholdsbutton:hover {
+    border-color: #00bf63;
+    color: white;
+    background-color: #00bf63;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 191, 99, 0.2);
+}
+
+/* Table Section */
+.householdstable {
+    margin-top: 25px;  /* Increased from 20px to 25px */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
 }
 
 .table-container {
-    max-height: 300px;
+    max-height: 500px;  /* Increased from 400px to 500px */
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+    width: 100%;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    padding: 14px 16px;  /* Increased padding */
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .table-container thead {
     position: sticky;
     top: 0;
-    background: rgba(0, 123, 255, 0.1);
+    background: #d4edda;
     z-index: 1;
 }
 
+.table-container thead th {
+    font-weight: 600;
+    color: #495057;
+}
+
+.table-container tbody tr:hover {
+    background-color: #f2f9f6;
+}
+
 .table-container::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;  /* Increased from 5px to 6px */
+    height: 6px;
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 123, 255, 0.2);
-    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
 }
 
-.resultstext{
-    margin-top: 0px !important;
-    color: #007bff;
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Table Action Buttons */
+.householdsviewmore,
+.householdeditbutton,
+.householddeletebutton {
+    padding: 6px 14px;  /* Increased horizontal padding */
+    border-radius: 15px;
     font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4px;  /* Increased margin */
 }
 
-.addhouseholdheadbutton{
+.householdsviewmore {
+    color: #00bf63;
+    text-decoration: none;
+    background: none;
+    border: none;
+}
+
+.householdsviewmore:hover {
+    color: #e4de37;
+    text-shadow: 0 0 1px rgba(228, 222, 55, 0.3);
+}
+
+.householdeditbutton {
+    background-color: #00bf63;
+    color: white;
+    border: 1px solid #00bf63;
+}
+
+.householdeditbutton:hover {
+    background-color: #00a857;
+    border-color: #00a857;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 191, 99, 0.3);
+}
+
+.householddeletebutton {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+    border-radius: 15px;
+}
+
+.householddeletebutton:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+/* Results Section */
+.results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 15px;  /* Increased padding */
+    margin-top: 15px;  /* Increased from 10px to 15px */
+    color: #495057;
+    align-items: center;
+}
+
+.resultstext {
+    margin: 0 !important;
+    font-weight: 500;
+    font-size: 1.05rem;  /* Added font-size */
+}
+
+/* Modal and Form Elements */
+.addhouseholdheadbutton {
     cursor: pointer;
-    color: #007bff;
+    color: #00bf63;
     transition: all 0.3s ease;
     font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+    padding: 10px 14px;  /* Increased padding */
+    border-radius: 6px;
+    display: inline-block;
 }
 
-.addhouseholdheadbutton:hover{
-    color: #0056b3;
-    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
+.addhouseholdheadbutton:hover {
+    color: #e4de37;
+    background-color: #f0f0f0;
 }
 
-#findresident{
+.findresident {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 18px 0;  /* Increased margin */
 }
 
-.subheading{
+.subheading {
     font-weight: 900;
-    margin-top: 50x !important;
-    margin-bottom: 0px;
-    color: #007bff;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+    margin-top: 25px !important;  /* Increased margin */
+    margin-bottom: 12px;  /* Increased margin */
+    color: #00bf63;
+    font-size: 1.2rem;  /* Increased from 1.1rem to 1.2rem */
 }
 
-.removebutton{
-    background-color: white;
-    border: none;
-    color: #007bff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.removebutton:hover{
-    color: #0056b3;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-.viewmorebutton{
-    background-color: white;
-    border: none;
-    color: #007bff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.viewmorebutton:hover{
-    color: #0056b3;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-.buttons{
+.buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 10px;  /* Increased padding */
+    border-radius: 6px;
     transition: all 0.3s ease;
 }
 
-.buttons:hover{
-    border-top: solid #007bff 1px;
-    border-bottom: solid #007bff 1px;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+.buttons:hover {
+    border-top: solid #00bf63 1px;
+    border-bottom: solid #00bf63 1px;
+    background-color: #f2f9f6;
 }
 
+.removebutton,
+.viewmorebutton {
+    background-color: transparent;
+    border: none;
+    padding: 6px 12px;  /* Increased padding */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.removebutton {
+    color: #007bff;
+}
+
+.removebutton:hover {
+    color: #dc3545;
+    background-color: #f8f9fa;
+}
+
+.viewmorebutton {
+    color: #00bf63;
+}
+
+.viewmorebutton:hover {
+    color: #e4de37;
+    background-color: #f8f9fa;
+}
+
+/* Socioeconomic Cards */
 .socioeconomiccard {
     display: flex;
     flex-direction: row;
-    overflow-x: auto; /* Enables horizontal scrolling */
-    gap: 30px; /* Adds space between cards */
-    padding: 10px;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #ccc transparent; /* Firefox scrollbar styling */
+    overflow-x: auto;
+    gap: 35px;
+    padding: 18px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+    margin: 0 auto;  /* Center the card */
+    width: 90%;  /* Set width to 90% of container */
+    justify-content: center;  /* Center items horizontally */
+    align-items: center;  /* Center items vertically */
 }
 
-/* For Webkit browsers (Chrome, Edge, Safari) */
 .socioeconomiccard::-webkit-scrollbar {
-    height: 5px; /* Thin scrollbar */
+    height: 6px;
 }
 
 .socioeconomiccard::-webkit-scrollbar-thumb {
-    background-color: #ccc; /* Color of scrollbar */
+    background-color: #ccc;
     border-radius: 10px;
 }
 
 .socioeconomiccard::-webkit-scrollbar-track {
-    background: transparent; /* Transparent track */
+    background: transparent;
 }
 
-.results{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-.household-container {
-    padding: 20px;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.05);
-}
-
-.household-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
-    border: 1px solid rgba(0, 123, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.household-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
-}
-
-.household-title {
-    color: #007bff;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+.csscardtitle {
+    color: #495057;
+    padding-bottom: 12px;  /* Increased padding */
     font-weight: 600;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
+    font-size: 1.4rem;  /* Increased from 1.3rem to 1.4rem */
+    margin-top: 0;
 }
 
-.household-content {
-    color: #333;
-    line-height: 1.6;
-}
-
-.household-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.household-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-.household-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.household-member {
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
-}
-
-.household-member:last-child {
-    border-bottom: none;
+/* Responsive Design */
+@media (max-width: 992px) {
+    .householdscontainer {
+        width: 96%;  /* Slight adjustment for large tablets */
+    }
 }
 
 @media (max-width: 768px) {
-    .household-container {
-        padding: 15px;
+    .householdscontainer {
+        width: 98%;  /* Increased from 95% to 98% */
+        padding: 20px;  /* Increased padding */
+    }
+
+    .householdstoppart {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;  /* Increased padding */
+    }
+
+    .householdstopright {
+        width: 100%;
+        height: auto;
+        margin-top: 12px;  /* Increased margin */
+        flex-wrap: wrap;
+        gap: 10px;  /* Increased gap */
+    }
+
+    .addhouseholdsbutton {
+        width: 100%;
+    }
+
+    .addhouseholdsbutton,
+    .searchhouseholdsbutton,
+    .allhouseholdsbutton {
+        margin: 5px 0;
     }
     
-    .household-card {
-        padding: 15px;
+    .table-container table {
+        min-width: 700px;  /* Increased from 650px to 700px */
     }
     
-    .household-title {
-        font-size: 1.2rem;
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .householdscontainer {
+        width: 100%;
+        padding: 15px;  /* Adjusted padding for smallest screens */
+    }
+
+    .householdstopright {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .addhouseholdsbutton,
+    .searchhouseholdsbutton,
+    .allhouseholdsbutton {
+        width: 100%;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        gap: 10px;  /* Increased gap */
+        align-items: flex-start;
+    }
+    
+    .results {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;  /* Increased gap */
     }
 }

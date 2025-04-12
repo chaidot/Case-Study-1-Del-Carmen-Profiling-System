@@ -211,7 +211,7 @@ function Residents(){
     //Fetchiing household data
     const fetchHouseholdData = async () => {
         try {
-        const response = await axios.get("http://localhost:5000/api/household");
+        const response = await axios.get("http://localhost:5000/household");
         const sortedResidents = response.data.sort((a, b) => b.id - a.id); // Sort by id in descending order (asc a.id - b.id)
         setFetchedHouseholdData(response.data);
         } catch (error) {
@@ -268,7 +268,7 @@ function Residents(){
     const closeModal = () => {
         setIsModalOpen(false);
         setCurrentPage(1);
-        setFormData({ firstname: '', middlename: '', lastname: '', suffix: '', sex: '', birthdate: '', maritalStatus: '', nationality: 'Filipino', religion: '', houseNumber: '', purok: '', barangay: 'Tambacan', mobileNumber: '', email: '', isStudent: '', schoolLevel: '', grade: '', school: '', employmentStatus: '', occupation: '', dateStarted: '', monthlyIncome: '', is4Ps: '', isSeniorCitizen: '', isPhilhealthMember: '' });
+        setFormData({ firstname: '', middlename: '', lastname: '', suffix: '', sex: '', birthdate: '', maritalStatus: '', nationality: 'Filipino', religion: '', houseNumber: '', purok: '', barangay: 'Del Carmen', mobileNumber: '', email: '', isStudent: '', schoolLevel: '', grade: '', school: '', employmentStatus: '', occupation: '', dateStarted: '', monthlyIncome: '', is4Ps: '', isSeniorCitizen: '', isPhilhealthMember: '' });
         setAge("");
         setmonthsEmployed("");
     };
@@ -704,7 +704,7 @@ function Residents(){
                                                 
                                             </div>
                                             <div className="input-group input-group-sm mb-3">
-                                                <span className="input-group-text" id="basic-addon1">
+                                                <span class="input-group-text" id="basic-addon1">
                                                 School </span>
                                                 <input type="text" className="form-control" aria-label="School" aria-describedby="basic-addon1"
                                                 required name="school" value={formData.school} onChange={handleChange} readOnly={mode === "view"}/>
@@ -768,7 +768,7 @@ function Residents(){
                                             <input type="text" class="form-control" aria-label="Text input with radio button" value="no" readOnly/>
                                         </div>
                                         <div className="input-group input-group-sm mb-3">
-                                            <span className="input-group-text" id="basic-addon1">Senior Citizen?</span>
+                                            <span class="input-group-text" id="basic-addon1">Senior Citizen?</span>
                                             <div class="input-group-text">
                                                 <input class="form-check-input mt-0" type="radio" value="yes" aria-label="Radio button for following text input" name='seniorcitizen' checked={formData.isSeniorCitizen === "yes"} disabled/>
                                             </div>
@@ -779,7 +779,7 @@ function Residents(){
                                             <input type="text" class="form-control" aria-label="Text input with radio button" value="no" readOnly/>
                                         </div>
                                         <div className="input-group input-group-sm mb-3">
-                                            <span className="input-group-text" id="basic-addon1">PhilHealth Member?</span>
+                                            <span class="input-group-text" id="basic-addon1">PhilHealth Member?</span>
                                             <div class="input-group-text">
                                                 <input class="form-check-input mt-0" type="radio" value="yes" aria-label="Radio button for following text input" name='philhealth' checked={formData.isPhilhealthMember === "yes"} onChange={mode !== "view" ?handlePhilhealthMemberChange : undefined}disabled={mode === "view"}/>
                                             </div>

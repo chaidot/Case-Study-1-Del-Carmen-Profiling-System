@@ -22,9 +22,9 @@ function PovertyWelfare(){
             const sortedResidents = response.data.sort((a, b) => b.id - a.id);
 
             const beneficiariesResidents = sortedResidents.filter(resident => 
-                resident.is4ps === "yes" || 
-                resident.isSeniorCitizen === "yes" || 
-                resident.isPhilhealthMember === "yes"
+                (resident.is4ps?.toLowerCase() === "yes" || resident.is4Ps?.toLowerCase() === "yes") || 
+                resident.isSeniorCitizen?.toLowerCase() === "yes" || 
+                resident.isPhilhealthMember?.toLowerCase() === "yes"
             );    
 
             setResidents(beneficiariesResidents);
@@ -43,9 +43,12 @@ function PovertyWelfare(){
     //Run filtering directly inside `useEffect`
     useEffect(() => {
         if (residents.length > 0) {
-            setfourPSResidents(residents.filter(resident => resident.is4ps && resident.is4ps.toLowerCase() === "yes"));
-            setseniorResidents(residents.filter(resident => resident.isSeniorCitizen && resident.isSeniorCitizen.toLowerCase() === "yes"));
-            setphilhealthResidents(residents.filter(resident => resident.isPhilhealthMember && resident.isPhilhealthMember.toLowerCase() === "yes"));
+            setfourPSResidents(residents.filter(resident => 
+                resident.is4ps?.toLowerCase() === "yes" || 
+                resident.is4Ps?.toLowerCase() === "yes"
+            ));
+            setseniorResidents(residents.filter(resident => resident.isSeniorCitizen?.toLowerCase() === "yes"));
+            setphilhealthResidents(residents.filter(resident => resident.isPhilhealthMember?.toLowerCase() === "yes"));
         }
     }, [residents]); // Runs only when `residents` updates
     
@@ -130,7 +133,7 @@ function PovertyWelfare(){
         <div className="socioeconomiccard">
             <div className="col-md-4">
                 <Card className="h-100">
-                    <h5 className="text-lg font-bold csscardtitle">Total Number of 4p’s Beneficiaries:</h5>
+                    <h5 className="text-lg font-bold csscardtitle">Total Number of 4p's Beneficiaries:</h5>
                     <p className="text-xl" id="socioeconomictotaltext">{fourPSResidents.length}</p>
                     {/*<p className="text-xl">{totalItems}</p>*/}
                     <p className="text-xl" id="socioeconomicviewmore" onClick={() => {setFilteredResidents(fourPSResidents);setsearchedResidents(fourPSResidents); setsearchedResidents(fourPSResidents);setresidentsinTable("4Ps")}}>View More</p>
@@ -174,7 +177,6 @@ function PovertyWelfare(){
                 </div>
                 <button type="button" class="btn btn-success" id="searchsocioeconomicsbutton" onClick={handleSearch}>Search</button>
             </div>
-
             </div>
             <div className="table-container">
             <table class="table table-striped table-hover" id="employmentdatatable">
@@ -198,7 +200,7 @@ function PovertyWelfare(){
                             <td>{resident.lastname}</td>
                             <td>{resident.sex}</td>
                             <td>{calculateAge(resident.birthdate).toString()}</td>
-                            <td>{resident.is4Ps}</td>
+                                <td>{resident.is4ps || resident.is4Ps}</td>
                             <td>{resident.isSeniorCitizen}</td>
                             <td>{resident.isPhilhealthMember}</td>
                         </tr>

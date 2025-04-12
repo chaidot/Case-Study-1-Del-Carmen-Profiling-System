@@ -1,248 +1,314 @@
-.residentscontainer{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-}
+@import '../styles/colors.css';
 
-.residentstoppart{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    height: 50px;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
-}
-
-.residentstopright{
-    display: flex;
-    flex-direction: row;
-    height: 50px;
-    align-items: center;
-    justify-content: center;
-}
-
-#searchresidentinput{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 15px;
-}
-
-#addresidentsbutton{
-    width: 200px;
-    background-color: #007bff;
-    border-radius: 15px;
-    border-color: #007bff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#addCSVbutton{
-    margin-left: auto;
-    width: 200px;
-    background-color: #007bff;
-    border-radius: 15px;
-    border-color: #007bff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#addresidentsbutton:hover, #addCSVbutton:hover{
-    background-color: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-#searchresidentsbutton{
-    background-color: #007bff;
-    border-radius: 15px;
-    border-color: #007bff;
-    margin-left: 10px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#searchresidentsbutton:hover{
-    background-color: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.residentstable{
-    margin-top: 10px;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
-}
-
-#residentsviewmore{
-    color: #007bff !important;
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-#residentsviewmore:hover{
-    color: #0056b3 !important;
-    cursor: pointer;
-    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.2);
-}
-
-#residenteditbutton{
-    background-color: #007bff;
-    border-radius: 15px;
-    border-color: #007bff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-#residenteditbutton:hover{
-    background-color: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-#residentdeletebutton{
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.table-container {
-    max-height: 300px;
-    overflow-y: auto;
-    position: relative;
-    margin: 0px !important;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
-}
-
-.table-container thead {
-    position: sticky;
-    top: 0;
-    background: rgba(0, 123, 255, 0.1);
-    z-index: 1;
-}
-
-.table-container::-webkit-scrollbar {
-    width: 5px;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 123, 255, 0.2);
-    border-radius: 2px;
-}
-
-.resultstext{
-    margin-left: 10px;
-    margin-top: 15px;
-    color: #007bff;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.1);
-}
-
-.residents-container {
-    padding: 20px;
+/* Variables for consistent theming */
+:root {
+    --primary: #1976d2;
+    --primary-light: #e3f2fd;
+    --primary-dark: #0d47a1;
+    --secondary: #f8f9fa;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+    --border-color: rgba(25, 118, 210, 0.2);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Main container */
+  .residentscontainer {
+    padding: 2rem;
     background-color: #f8f9fa;
-}
-
-.residents-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
-    border: 1px solid rgba(0, 123, 255, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.residents-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.residents-title {
-    color: #007bff;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.residents-content {
-    color: #333;
-    line-height: 1.6;
-}
-
-.residents-actions {
+    min-height: 100vh;
+  }
+  
+  /* Top section with add button and search */
+  .residentstoppart {
     display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.residents-button {
-    padding: 8px 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Add resident button */
+  #addresidentsbutton {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  #addresidentsbutton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Search section */
+  .residentstopright {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Search Input */
+  #searchresidentinput {
+    width: 300px;
+  }
+  
+  #searchresidentinput .form-control {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    transition: all 0.2s ease;
+  }
+  
+  #searchresidentinput .form-control:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  }
+  
+  #searchresidentinput .dropdown-toggle {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  #searchresidentinput .dropdown-toggle:hover {
+    background-color: #f8f9fa;
+  }
+  
+  #searchresidentinput .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    padding: 0.5rem;
+  }
+  
+  #searchresidentinput .dropdown-item {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #2c3e50;
+    transition: all 0.2s ease;
+  }
+  
+  #searchresidentinput .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #4CAF50;
+  }
+  
+  #searchresidentsbutton {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  #searchresidentsbutton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table container */
+  .residentstable {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  /* Table styling */
+  .table {
+    margin-bottom: 0;
+  }
+  
+  .table thead th {
+    background-color: #4CAF50;
     color: white;
+    font-weight: 500;
+    border: none;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  /* Action buttons */
+  #residentsviewmore {
+    color: #4CAF50;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.residents-button:hover {
-    background-color: #0056b3;
-}
-
-.resident-item {
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
-}
-
-.resident-item:last-child {
-    border-bottom: none;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    color: #007bff;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  #residentsviewmore:hover {
+    color: #45a049;
+  }
+  
+  #residenteditbutton, #residentdeletebutton {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  #residenteditbutton:hover, #residentdeletebutton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Results text */
+  .resultstext {
+    margin-top: 1rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-align: right;
+  }
+  
+  /* Modal styling */
+  .modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1.5rem;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .modal-title {
+    color: #2c3e50;
     font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.form-control {
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    padding: 8px 12px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-control:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-@media (max-width: 768px) {
-    .residents-container {
-        padding: 15px;
+    font-size: 1.25rem;
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+  }
+  
+  .modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1.5rem;
+  }
+  
+  /* Form styling */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    outline: none;
+  }
+  
+  .form-control::placeholder {
+    color: #adb5bd;
+  }
+  
+  /* Input Groups */
+  .input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+    
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .input-group input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    outline: none;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .residentstoppart {
+      flex-direction: column;
+      align-items: stretch;
     }
     
-    .residents-card {
-        padding: 15px;
+    #searchresidentinput {
+      width: 100%;
     }
     
-    .residents-title {
-        font-size: 1.2rem;
+    .residentstopright {
+      flex-direction: column;
     }
-}
+    
+    .table-container {
+      margin: 0 -1.5rem;
+    }
+    
+    .modal-dialog {
+      margin: 1rem;
+    }
+  }
+  
+  /* Toast notifications */
+  .Toastify__toast {
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  
+  .Toastify__toast--success {
+    background: #4CAF50;
+  }
+  
+  .Toastify__toast--error {
+    background: #dc3545;
+  }
+  
+  .Toastify__toast--warning {
+    background: #ffc107;
+    color: #2c3e50;
+  }
+  
+  .Toastify__toast--info {
+    background: #17a2b8;
+  }
