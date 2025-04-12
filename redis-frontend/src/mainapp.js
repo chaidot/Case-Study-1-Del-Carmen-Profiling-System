@@ -14,6 +14,7 @@ import Households from "./components/Households";
 import SocioEconomic from "./components/SocioEconomic";
 import DataVisualization from "./components/DataVisualization";
 import Documents from "./components/Documents";
+import IncidentReporting from "./components/IncidentReporting";
 
 function Mainapp() {
     const storedComponent = localStorage.getItem("activeComponent") || "dashboard";
@@ -40,7 +41,8 @@ function Mainapp() {
         households: <Households />,
         documents: <Documents />,
         socioeconomic: <SocioEconomic />,
-        datavisual: <DataVisualization setActiveComponent={setActiveComponent} />
+        datavisual: <DataVisualization setActiveComponent={setActiveComponent} />,
+        incidentreporting: <IncidentReporting />
     };
 
     return (
@@ -61,22 +63,25 @@ function Mainapp() {
 
                 <div className="mainappoptions">
                     <div className={`option ${activeComponent === "dashboard" ? "active-option" : ""}`} onClick={() => setActiveComponent("dashboard")}>
-                        <i className="bi bi-house"></i> <span>{!isSidebarCollapsed && "Dashboard"}</span>
+                        <i className="bi bi-house-fill"></i> <span>{!isSidebarCollapsed && "Dashboard"}</span>
                     </div>
                     <div className={`option ${activeComponent === "residents" ? "active-option" : ""}`} onClick={() => setActiveComponent("residents")}>
-                        <i className="bi bi-person-bounding-box"></i> <span>{!isSidebarCollapsed && "Residents"}</span>
+                        <i className="bi bi-file-person-fill"></i> <span>{!isSidebarCollapsed && "Residents"}</span>
                     </div>
                     <div className={`option ${activeComponent === "households" ? "active-option" : ""}`} onClick={() => setActiveComponent("households")}>
-                        <i className="bi bi-houses"></i> <span>{!isSidebarCollapsed && "Households"}</span>
+                        <i className="bi bi-people-fill"></i> <span>{!isSidebarCollapsed && "Households"}</span>
                     </div>
-                    {/* <div className={`option ${activeComponent === "documents" ? "active-option" : ""}`} onClick={() => setActiveComponent("documents")}>
-                        <i class="bi bi-file-earmark"></i> {!isSidebarCollapsed && "Documents"}
-                    </div> */}
                     <div className={`option ${activeComponent === "socioeconomic" ? "active-option" : ""}`} onClick={() => setActiveComponent("socioeconomic")}>
-                        <i className="bi bi-duffle"></i> <span>{!isSidebarCollapsed && "Socio-Economic"}</span>
+                        <i className="bi bi-bank"></i> <span>{!isSidebarCollapsed && "Socio-Economic"}</span>
                     </div>
                     <div className={`option ${activeComponent === "datavisual" ? "active-option" : ""}`} onClick={() => setActiveComponent("datavisual")}>
-                        <i className="bi bi-bar-chart"></i> <span>{!isSidebarCollapsed && "Data Visualization"}</span>
+                        <i className="bi bi-bar-chart-fill"></i> <span>{!isSidebarCollapsed && "Data Visualization"}</span>
+                    </div>
+                    <div className={`option ${activeComponent === "documents" ? "active-option" : ""}`} onClick={() => setActiveComponent("documents")}>
+                        <i className="bi bi-file-earmark-text-fill"></i> <span>{!isSidebarCollapsed && "Documents"}</span>
+                    </div>
+                    <div className={`option ${activeComponent === "incidentreporting" ? "active-option" : ""}`} onClick={() => setActiveComponent("incidentreporting")}>
+                        <i className="bi bi-exclamation-triangle-fill"></i> <span>{!isSidebarCollapsed && "Incident Reporting"}</span>
                     </div>
                 </div>
 
@@ -89,11 +94,11 @@ function Mainapp() {
             {/* Right Side */}
             <div className="mainapprightside">
                 <div className="mainapptop">
-                    <img src={brgyLogo} alt="Barangay Logo" id="tambacanlogo" />
+                    <img src={brgyLogo} alt="Barangay Logo" id="brgylogo" />
                     <div id="signintitle">Del Carmen Profiling System</div>
                     <img src={iliganLogo} alt="Iligan City Logo" id="iliganlogo"/>
                 </div>
-
+ 
                 <div className="mainappmainpart">
                     {componentsMap[activeComponent]}
                 </div>

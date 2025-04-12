@@ -1,0 +1,32 @@
+.educationdatacard {
+    display: flex;  /* Enables horizontal layout */
+    overflow-x: auto;  /* Enables horizontal scrolling */
+    white-space: nowrap;  /* Prevents cards from wrapping */
+    gap: 30px; /* Adds space between cards */
+    padding-bottom: 10px; /* Prevents scrollbar from overlapping content */
+}
+
+/* Ensure cards don’t shrink and remain in a row */
+.educationdatacard .col-md-4 {
+    flex: 0 0 auto; /* Prevents shrinking */
+    width: 250px; /* Adjust width as needed */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.educationdatacard::-webkit-scrollbar {
+    height: 3px; /* Makes it very thin or remove by setting to 0 */
+}
+
+.educationdatacard::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2); /* Faint scrollbar */
+    border-radius: 2px;
+}
+
+/* Add left and right spacing before the first and after the last card */
+.educationdatacard::before,
+.educationdatacard::after {
+    content: "";
+    display: block;
+    width: 5px; /* Adjust to add more space */
+    flex-shrink: 0;
+}

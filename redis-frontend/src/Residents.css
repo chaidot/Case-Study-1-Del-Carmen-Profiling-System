@@ -1,0 +1,236 @@
+.modal-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index:9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-content .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-content label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.modal-content .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.modal-content button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    width: 120px;
+}
+
+.modal-content button.cancel {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.modal-content button.save {
+    background: #00bf63;
+    color: white;
+}
+
+.modal-content button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content button.cancel:hover {
+    background: #e0e0e0;
+}
+
+.modal-content button.save:hover {
+    background: #e4de37;
+}
+
+.delete-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 0.8rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 250px;
+    max-width: 90%;
+}
+
+.delete-modal h2 {
+    margin-bottom: 0.3rem;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.delete-modal p {
+    margin-bottom: 0.6rem;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.delete-modal .button-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.delete-modal button {
+    padding: 0.3rem 0.8rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    width: 80px;
+}
+
+.delete-modal button.cancel {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.delete-modal button.delete {
+    background: #00bf63;
+    color: white;
+}
+
+.delete-modal button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-modal button.cancel:hover {
+    background: #e0e0e0;
+}
+
+.delete-modal button.delete:hover {
+    background: #e4de37;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 0.5rem;
+}
+
+.stats-card h3 {
+    color: #000;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stats-card p {
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+#dashboardtotaltext {
+    color: #dc3545;
+    margin: 0px;
+    font-weight: 600;
+}
+
+.csscardtitle {
+    color: #343a40;
+    font-weight: 600;
+}
+
+.residentstoppart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#searchresidentinput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+#searchresidentinput .dropdown {
+    min-width: 150px;
+}
+
+#searchresidentinput .btn {
+    width: 100%;
+    text-align: left;
+    background-color: white;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+#searchresidentinput .form-control {
+    flex: 1;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#searchresidentinput .form-control:focus {
+    border-color: #00bf63;
+} 

@@ -208,9 +208,9 @@ function Signin() {
     return (
         <div className="signincontainer">
             <div className="signintop">
-                <img src={brgyLogo} alt="Barangay Logo" id="tambacanlogo" />
+               
                 <div id="signintitle">Del Carmen Profiling System</div>
-                <img src={iliganLogo} alt="Iligan City Logo" id="iliganlogo"/>
+               
             </div>
             
             {forgotPassword ? renderForgotPasswordForm() : renderLoginRegisterForm()}
