@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const PDFDocument = require('pdfkit');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,10 +18,18 @@ const client = redis.createClient({
   url: 'redis://@127.0.0.1:6379'  // Default Redis connection
 });
 
+// Redis event handlers
+client.on('error', (err) => {
+  console.error('Redis Client Error:', err);
+});
+
+client.on('reconnecting', () => {
+  console.log('Redis Client Reconnecting...');
+});
+
 client.connect()
   .then(() => console.log('Connected to Redis'))
   .catch(err => console.error('Redis connection error:', err));
-
 
 // LOGIN
 
@@ -47,8 +56,6 @@ app.post("/login", async (req, res) => {
       res.status(401).json({ success: false, message: "Invalid credentials" });
   }
 });
-
-
 
 // CRUD Operations
 
@@ -117,9 +124,9 @@ app.post('/residents', async (req, res) => {
               Object.entries(resident).map(([key, value]) => [key, String(value ?? "")])
             );
 
-            console.log("Clean Residen:", cleanResident);
+      console.log("Clean Residen:", cleanResident);
       
-            // ✅ Corrected hSet usage
+      // ✅ Corrected hSet usage
             for (const [key, value] of Object.entries(cleanResident)) {
               await client.hSet(`resident:${newId}`, key, value);
             }            
@@ -137,9 +144,6 @@ app.post('/residents', async (req, res) => {
           res.status(500).json({ message: "Failed to process CSV data" });
         }
       });
-      
-      
-
 
 // Read all residents
 app.get('/residents', async (req, res) => {
@@ -160,6 +164,23 @@ app.get('/residents', async (req, res) => {
   }
 });
 
+// Get single resident by ID
+app.get('/residents/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const resident = await client.hGetAll(`resident:${id}`);
+    
+    if (Object.keys(resident).length === 0) {
+      return res.status(404).json({ message: 'Resident not found' });
+    }
+    
+    resident.id = id;
+    res.json(resident);
+  } catch (error) {
+    console.error('Error fetching resident:', error);
+    res.status(500).json({ message: 'Failed to fetch resident' });
+  }
+});
 
 // Update (U)
 app.put('/residents/:id', async (req, res) => {
@@ -199,7 +220,6 @@ app.put('/residents/:id', async (req, res) => {
     if (isSeniorCitizen) await client.hSet(`resident:${id}`, 'isSeniorCitizen', isSeniorCitizen);
     if (isPhilhealthMember) await client.hSet(`resident:${id}`, 'isPhilhealthMember', isPhilhealthMember);
 
-
     res.status(200).json({ message: 'Resident updated successfully' });
   } catch (error) {
     console.error('Error updating resident:', error);
@@ -214,8 +234,7 @@ app.delete('/residents/:id', async (req, res) => {
   res.status(200).json({ message: 'Resident deleted successfully' });
 });
 
-
-//HOUSEHOLD
+// HOUSEHOLD
 
 //Fetching all the household data
 app.get("/api/household", async (req, res) => {
@@ -242,7 +261,6 @@ app.get("/api/household", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
 
 // API route to save householdData
 app.post("/api/household", async (req, res) => {
@@ -323,7 +341,271 @@ app.delete("/api/household/:id", async (req, res) => {
   }
 });
 
+// USER MANAGEMENT ROUTES
 
+// Get all users
+app.get("/users", async (req, res) => {
+    try {
+        console.log('Attempting to fetch users from Redis...');
+        const keys = await client.keys("user:*");
+        console.log('Found keys:', keys);
+        
+        const users = await Promise.all(
+            keys.map(async (key) => {
+                console.log('Fetching data for key:', key);
+                const userData = await client.hGetAll(key);
+                console.log('User data:', userData);
+                return {
+                    email: userData.email,
+                    role: userData.role
+                };
+            })
+        );
+        console.log('Final users array:', users);
+        res.json(users);
+    } catch (error) {
+        console.error('Detailed error in /users route:', error);
+        console.error('Error stack:', error.stack);
+        res.status(500).json({ 
+            success: false, 
+            message: "Failed to fetch users",
+            error: error.message 
+        });
+    }
+});
+
+// Register new user
+app.post("/register", async (req, res) => {
+    const { email, password, role } = req.body;
+    
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: "Email and password are required" });
+    }
+
+    try {
+        // Check if user already exists
+        const exists = await client.exists(`user:${email}`);
+        if (exists) {
+            return res.status(400).json({ success: false, message: "User already exists" });
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        // Store user data
+        await client.hSet(`user:${email}`, {
+            email: email,
+            password: hashedPassword,
+            role: role || 'user',
+            createdAt: new Date().toISOString()
+        });
+
+        res.status(201).json({ success: true, message: "User created successfully" });
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).json({ success: false, message: "Failed to create user" });
+    }
+});
+
+// Delete user
+app.delete("/users/:email", async (req, res) => {
+    try {
+        const email = req.params.email;
+        const userKey = `user:${email}`;
+        
+        // Check if user exists
+        const exists = await client.exists(userKey);
+        if (!exists) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        // Delete the user
+        await client.del(userKey);
+        res.json({ success: true, message: "User deleted successfully" });
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ success: false, message: "Failed to delete user" });
+    }
+});
+
+// INCIDENT REPORTING ROUTES
+
+// Get all incidents
+app.get('/incidents', async (req, res) => {
+  try {
+    const keys = await client.keys('incident:*');
+    const incidents = await Promise.all(keys.map(async (key) => {
+      const incident = await client.hGetAll(key);
+      incident.id = key.split(':')[1]; // Extract ID from key
+      return incident;
+    }));
+    res.json(incidents);
+  } catch (error) {
+    console.error('Error fetching incidents:', error);
+    res.status(500).json({ message: 'Failed to fetch incidents' });
+  }
+});
+
+// Create new incident
+app.post('/incidents', async (req, res) => {
+  const { type, title, description, location, reporterName, reporterContact, priority, status } = req.body;
+
+  try {
+    // Get the highest current ID (or start from 1)
+    const newId = await client.incr("incidentid");
+
+    // Save incident data in Redis hash
+    await client.hSet(`incident:${newId}`, 'type', type);
+    await client.hSet(`incident:${newId}`, 'title', title);
+    await client.hSet(`incident:${newId}`, 'description', description);
+    await client.hSet(`incident:${newId}`, 'location', location);
+    await client.hSet(`incident:${newId}`, 'reporterName', reporterName);
+    await client.hSet(`incident:${newId}`, 'reporterContact', reporterContact);
+    await client.hSet(`incident:${newId}`, 'priority', priority);
+    await client.hSet(`incident:${newId}`, 'status', status);
+    await client.hSet(`incident:${newId}`, 'date', new Date().toISOString());
+
+    res.status(201).json({ message: 'Incident reported successfully', id: newId });
+  } catch (error) {
+    console.error('Error saving incident:', error);
+    res.status(500).json({ message: 'Failed to save incident', error: error.message });
+  }
+});
+
+// Update incident status
+app.put('/incidents/:id', async (req, res) => {
+  const id = req.params.id;
+  const { status } = req.body;
+
+  try {
+    const existingIncident = await client.hGetAll(`incident:${id}`);
+    if (Object.keys(existingIncident).length === 0) {
+      return res.status(404).json({ message: 'Incident not found' });
+    }
+
+    await client.hSet(`incident:${id}`, 'status', status);
+    res.status(200).json({ message: 'Incident status updated successfully' });
+  } catch (error) {
+    console.error('Error updating incident:', error);
+    res.status(500).json({ message: 'Failed to update incident' });
+  }
+});
+
+// DOCUMENT MANAGEMENT ROUTES
+
+// Get all documents
+app.get('/documents', async (req, res) => {
+    try {
+        const keys = await client.keys('document:*');
+        const documents = await Promise.all(keys.map(async (key) => {
+            const document = await client.hGetAll(key);
+            document.id = key.split(':')[1];
+            return document;
+        }));
+        res.json(documents);
+    } catch (error) {
+        console.error('Error fetching documents:', error);
+        res.status(500).json({ message: 'Failed to fetch documents' });
+    }
+});
+
+// Create new document
+app.post('/documents', async (req, res) => {
+    const { documentType, residentId, purpose, dateIssued, status, amount, validUntil, requirements, notes } = req.body;
+
+    try {
+        const newId = await client.incr("documentid");
+
+        await client.hSet(`document:${newId}`, 'documentType', documentType);
+        await client.hSet(`document:${newId}`, 'residentId', residentId);
+        await client.hSet(`document:${newId}`, 'purpose', purpose);
+        await client.hSet(`document:${newId}`, 'dateIssued', dateIssued);
+        await client.hSet(`document:${newId}`, 'status', status);
+        await client.hSet(`document:${newId}`, 'amount', amount || '0');
+        await client.hSet(`document:${newId}`, 'validUntil', validUntil || '');
+        await client.hSet(`document:${newId}`, 'requirements', requirements || '');
+        await client.hSet(`document:${newId}`, 'notes', notes || '');
+
+        res.status(201).json({ message: 'Document created successfully', id: newId });
+    } catch (error) {
+        console.error('Error creating document:', error);
+        res.status(500).json({ message: 'Failed to create document', error: error.message });
+    }
+});
+
+// Update document status
+app.put('/documents/:id', async (req, res) => {
+    const id = req.params.id;
+    const { status } = req.body;
+
+    try {
+        const existingDocument = await client.hGetAll(`document:${id}`);
+        if (Object.keys(existingDocument).length === 0) {
+            return res.status(404).json({ message: 'Document not found' });
+        }
+
+        await client.hSet(`document:${id}`, 'status', status);
+        res.status(200).json({ message: 'Document status updated successfully' });
+    } catch (error) {
+        console.error('Error updating document:', error);
+        res.status(500).json({ message: 'Failed to update document' });
+    }
+});
+
+// Delete document
+app.delete('/documents/:id', async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const exists = await client.exists(`document:${id}`);
+        if (!exists) {
+            return res.status(404).json({ message: 'Document not found' });
+        }
+
+        await client.del(`document:${id}`);
+        res.status(200).json({ message: 'Document deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting document:', error);
+        res.status(500).json({ message: 'Failed to delete document' });
+    }
+});
+
+// Download document
+app.get('/documents/:id/download', async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const document = await client.hGetAll(`document:${id}`);
+        if (Object.keys(document).length === 0) {
+            return res.status(404).json({ message: 'Document not found' });
+        }
+
+        const doc = new PDFDocument();
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=document-${id}.pdf`);
+
+        doc.pipe(res);
+        
+        doc.fontSize(20).text('Barangay Document', { align: 'center' });
+        doc.moveDown();
+        doc.fontSize(12).text(`Document Type: ${document.documentType}`);
+        doc.text(`Resident ID: ${document.residentId}`);
+        doc.text(`Purpose: ${document.purpose}`);
+        doc.text(`Date Issued: ${new Date(document.dateIssued).toLocaleDateString()}`);
+        doc.text(`Status: ${document.status}`);
+        doc.text(`Amount: ₱${document.amount || '0.00'}`);
+        doc.text(`Valid Until: ${document.validUntil ? new Date(document.validUntil).toLocaleDateString() : 'N/A'}`);
+        doc.text(`Requirements: ${document.requirements || 'None'}`);
+        doc.text(`Notes: ${document.notes || 'None'}`);
+        doc.moveDown();
+        doc.fontSize(10).text('This is an official document of the Barangay.', { align: 'center' });
+        
+        doc.end();
+    } catch (error) {
+        console.error('Error downloading document:', error);
+        res.status(500).json({ message: 'Failed to download document' });
+    }
+});
 
 // Start server
 app.listen(PORT, () => {
